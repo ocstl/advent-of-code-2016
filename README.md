@@ -1,1 +1,3 @@
-# advent-of_code-2016
+# advent-of-code-2016
+
+Solutions to Advent of Code 2016.
