@@ -3,3 +3,6 @@ name = "advent-of-code-2016"
 version = "0.1.0"
 authors = ["Olivier Chassé St-Laurent <oliviercsl@gmail.com>"]
 edition = "2018"
+
+[dependencies]
+md5 = "0.7.0"
