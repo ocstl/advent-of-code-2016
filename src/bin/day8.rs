@@ -76,11 +76,10 @@ impl LittleScreen {
         {
             *i = *pixel;
         }
+        initial_column.rotate_right(steps);
 
         for (i, pixel) in initial_column
             .iter()
-            .cycle()
-            .skip(Self::HEIGHT - (steps % Self::HEIGHT))
             .zip(self.0.iter_mut().skip(column).step_by(Self::WIDTH))
         {
             *pixel = *i;
@@ -88,26 +87,8 @@ impl LittleScreen {
     }
 
     fn rotate_row(&mut self, row: usize, steps: usize) {
-        let mut initial_row = [false; Self::WIDTH];
-        for (i, pixel) in initial_row
-            .iter_mut()
-            .zip(self.0.iter().skip(row * Self::WIDTH))
-        {
-            *i = *pixel;
-        }
-
-        // Since we are cycling through it (for the offset), the `take` adaptor is absolutely
-        // necessary. Otherwise, we will keep cycling and the iterator over the screen will
-        // continue as well.
-        for (i, pixel) in initial_row
-            .iter()
-            .cycle()
-            .skip(Self::WIDTH - (steps % Self::WIDTH))
-            .take(Self::WIDTH)
-            .zip(self.0.iter_mut().skip(row * Self::WIDTH))
-        {
-            *pixel = *i;
-        }
+        let start_idx = row * Self::WIDTH;
+        self.0[start_idx..(start_idx + Self::WIDTH)].rotate_right(steps);
     }
 }
 
