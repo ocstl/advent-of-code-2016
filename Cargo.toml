@@ -6,4 +6,5 @@ edition = "2018"
 
 [dependencies]
 md5 = "0.7.0"
+permutohedron = "0.2.4"
 regex = "1.5.4"
