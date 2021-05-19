@@ -21,9 +21,9 @@ impl From<&str> for Room {
         let name = iter.next().unwrap().to_string();
 
         Self {
-            checksum,
-            sector_id,
             name,
+            sector_id,
+            checksum,
         }
     }
 }
