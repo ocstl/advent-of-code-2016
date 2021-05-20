@@ -133,7 +133,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 None
             }
         })
-        .unwrap_or(String::from("No password found."));
+        .unwrap_or_else(|| String::from("No password found."));
     println!("Part 2: {}", password);
 
     Ok(())
